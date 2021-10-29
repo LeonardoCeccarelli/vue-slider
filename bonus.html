@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- link mio CSS -->
+    <link rel="stylesheet" href="css/bonus.css">
+
+    <!-- link CDN VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <title>Vue Carousel - Bonus</title>
+</head>
+
+<body>
+
+    <div id="root">
+
+        <header>
+            <h1>Vue Carousel</h1>
+        </header>
+
+        <main>
+            <div class="carousel_container">
+
+                <!-- immagine grande che deve cambiare -->
+                <div class="main_image_container" @mouseenter="stopInterval" @mouseout="startInterval">
+                    <div class="main_image" v-for="(image, index) in listImage"
+                        v-bind:class="(index === indexActiveImg) ? 'active' : '' ">
+                        <img v-bind:src="image.url" v-bind:alt="'immagine numero ' + (index + 1)">
+
+                        <!-- descrizione immagine -->
+                        <div class="image_text_container">
+                            <h3>{{ image.title }}</h3>
+                            <p>{{ image.subTitle }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- lista immagini totali con pulsanti -->
+                <div class="scroll_image_container">
+                    <img v-bind:src="image.url" v-bind:alt="'immagine numero ' + (index + 1)"
+                        v-for="(image, index) in listImage" v-bind:class="(index === indexActiveImg) ? 'active' : '' ">
+
+                    <!-- bottone indietro -->
+                    <div class="btn btn_back" @click="onClickBackBtn">
+                        <a><i class="fas fa-angle-up"></i></a>
+                    </div>
+
+                    <!-- bottone avanti -->
+                    <div class="btn btn_next" @click="onClickNextBtn">
+                        <a><i class="fas fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+
+    </div>
+
+    <!-- link mio JS -->
+    <script src="js/bonus.js"></script>
+
+</body>
+
+</html>
