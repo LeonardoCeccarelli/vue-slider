@@ -30,31 +30,31 @@
             <div class="carousel_container">
 
                 <!-- immagine grande che deve cambiare -->
-                <div class="main_image_container" v-for="(image, index) in listImage">
-                    <img v-bind:src="img/01.jpg" v-bind:alt="'immagine numero ' + (i + 1)">
+                <div class="main_image_container">
+                    <div class="main_image" v-for="(image, index) in listImage"
+                        v-bind:class="(index === indexActiveImg) ? 'active' : '' ">
+                        <img v-bind:src="image.url" v-bind:alt="'immagine numero ' + (index + 1)">
 
-                    <!-- descrizione immagine -->
-                    <div class="image_text_container">
-                        <h3>CIAO</h3>
-                        <p>ciao</p>
+                        <!-- descrizione immagine -->
+                        <div class="image_text_container">
+                            <h3>{{ image.title }}</h3>
+                            <p>{{ image.subTitle }}</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- lista immagini totali con pulsanti -->
                 <div class="scroll_image_container">
-                    <img src="img/02.jpg" alt="">
-                    <img src="img/02.jpg" alt="">
-                    <img src="img/02.jpg" alt="">
-                    <img src="img/02.jpg" alt="">
-                    <img src="img/02.jpg" alt="">
+                    <img v-bind:src="image.url" v-bind:alt="'immagine numero ' + (index + 1)"
+                        v-for="(image, index) in listImage" v-bind:class="(index === indexActiveImg) ? 'active' : '' ">
 
                     <!-- bottone indietro -->
-                    <div class="btn btn_back">
+                    <div class="btn btn_back" @click="onClickBackBtn">
                         <a><i class="fas fa-angle-up"></i></a>
                     </div>
 
                     <!-- bottone avanti -->
-                    <div class="btn btn_next">
+                    <div class="btn btn_next" @click="onClickNextBtn">
                         <a><i class="fas fa-angle-down"></i></a>
                     </div>
                 </div>
